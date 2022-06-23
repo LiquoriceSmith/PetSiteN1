@@ -17,3 +17,23 @@ class PetTest(models.Model):
     class Meta:
         verbose_name = 'Тест'
         verbose_name_plural = 'Тесты'
+
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=300)
+
+
+class Answers(models.Model):
+    question_text = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answers = models.CharField(max_length=150)
+    right_answer = models.CharField(max_length=150)
+
+
+class UserAnswer(models.Model):
+    user = models.CharField(max_length=200)
+    # потом изменить  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
+    # question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=False)
+    answer = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.user
