@@ -4,6 +4,13 @@ from django.urls import reverse
 
 # Create your models here.
 
+class Poll(models.Model):
+    question = models.TextField()
+    option_one = models.CharField(max_length=150)
+    option_two = models.CharField(max_length=150)
+    option_three = models.CharField(max_length=150)
+
+
 class PetTest(models.Model):
     question = models.TextField(blank=True, verbose_name='Вопрос')
     answer1 = models.CharField(max_length=200, verbose_name='1 вариант ответа')

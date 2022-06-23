@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{
+{% block content%}
+<h1> {{poll.question}} </h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="'form-group">
+        <div class="radio">
+            <label>
+                <input type="radio" name="poll" value="{{poll.option_one}}" required>
+                {{poll.option_one}}
+            </label> &nbsp;
+            <label>
+                <input type="radio" name="poll" value="{{poll.option_two}}" required>
+                {{poll.option_two}}
+            </label> &nbsp;
+            <label>
+                <input type="radio" name="poll" value="{{poll.option_three}}" required>
+                {{poll.option_three}}
+            </label> &nbsp;
+        </div>
+    </div>
+    <button type="submit" class="btn btn-info"> Submit</button>
+</form>
+
+{%endblock%}

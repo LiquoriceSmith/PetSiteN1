@@ -1,10 +1,20 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import PetTest, UserAnswer
+from .models import PetTest, UserAnswer, Poll
 from .forms import SimpleForm
 
 
 # Create your views here.
+
+
+def vote(request, poll_id):
+    poll = Poll.objects.get(pk=poll_id)
+    if request.method == 'POST':
+        print(request.POST['poll'])
+    context = {
+        'poll': poll,
+    }
+    return render(request, 'pettest/vote.html', context)
 
 
 class HomePettest(ListView):
